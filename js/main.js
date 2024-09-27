@@ -10,12 +10,14 @@ let imgs = document.querySelectorAll("img");
 document.body.addEventListener("mousedown", (e) => {
     let intial_postion = e.clientX;
     data.intalx = intial_postion;
+    track != null ? track.style.cursor = 'grabbing' : console.log("track null");
     data.mousec = 1;
 });
 document.body.addEventListener("mouseup", (e) => {
     data.mousec = 0;
     data.intalx = e.clientX;
     data.pper = data.nper;
+    track != null ? track.style.cursor = 'grab' : console.log("track null");
 });
 document.body.addEventListener('mousemove', (e) => {
     if (data.mousec === 0) {
@@ -25,11 +27,11 @@ document.body.addEventListener('mousemove', (e) => {
     let delta = window.innerWidth;
     let value = (smt / delta) * -100;
     let nval = data.pper + value;
-    nval = Math.max(-150, Math.min(10, nval));
+    nval = Math.max(-130, Math.min(10, nval));
     data.nper = nval;
     track === null || track === void 0 ? void 0 : track.animate({ transform: `translate(${nval}%,50%)` }, { duration: 300, fill: 'forwards' });
     imgs.forEach((elem) => {
-        elem.animate({ objectPosition: `${nval + 100}% 50%` }, { duration: 600, fill: 'forwards' });
+        elem.animate({ objectPosition: `${nval + 100}% 50%` }, { duration: 1200, fill: 'forwards' });
     });
 });
 //# sourceMappingURL=main.js.map
